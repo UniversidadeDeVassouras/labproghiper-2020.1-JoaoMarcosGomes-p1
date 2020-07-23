@@ -3,8 +3,8 @@ class Estado:
         self._id = id
         self._nome = nome
         self._uf = uf
-        self._icone = icone
-        self._listaNoticia = listaNoticia
+        self._iconeEstado = iconeEstado
+        self._listaNoticia = listaNoticias
 
     def getId(self):
         return self._id
@@ -15,4 +15,4 @@ class Estado:
     def getIcone(self):
         return self._iconeEstado
     def getNewsList(self):
-        return self._listaNoticia
+        return self._listaNoticias

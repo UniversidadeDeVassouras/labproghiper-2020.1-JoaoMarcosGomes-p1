@@ -1,5 +1,5 @@
 from application.model.entity.noticia import Noticia
-from application import listaNoticias
+from application import listaNoticia
 
 class NoticiaDao:
 
@@ -10,10 +10,13 @@ class NoticiaDao:
     def mostrarNoticias(self, estado):
         return estado.getListaNoticias()
     def busca(self, id):
-        for estado in range(0, len(self._listaEstados)):
-            if self._listaEstados[estado].getId() == int(id):
-                return self._listaEstados[estado]
+        for noticia in range(0, len(self._listaNoticias)):
+            if self._listaNoticias[noticia].getId() == int(id):
+                return self._listaNoticias[noticia]
         return None
-
-    def mostrarNoticia(self):
-        return self._listaNoticias
+    def apagarComentario(self, noticia):
+        noticia.getComment().pop(len(noticia.getComment())-1)
+    def salvarView(self, noticia)
+        noticia.setQtdView()
+    def salvarLike(self, noticia):
+        noticia.setQtdLike():

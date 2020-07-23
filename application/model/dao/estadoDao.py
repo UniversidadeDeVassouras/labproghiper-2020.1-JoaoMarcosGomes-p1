@@ -1,11 +1,11 @@
 from application.model.entity.estado import Estado
-from application import listaEst
+from application import listaEstados
 
 class EstadoDao:
     def __init__(self):
         self._listaEstados = listaEstados
     def mostrarEstados(self):
-        return self.listaEstados
+        return self._listaEstados
     def mostrarNoticias(self, estado):
         return estado.getListaNoticias()
     def busca(self, id):
