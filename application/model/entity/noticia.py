@@ -24,13 +24,13 @@ class Noticia:
         return self._iconeNoticia
     
     def getVideo(self):
-        return self._id
+        return self._video
     
     def getDataNoticia(self):
-        return self._id
+        return self._dataNoticia
     
     def getEstado(self):
-        return self._id
+        return self._estado
     
     def setQtdView(self):
         self._qtdView = self._qtdView + 1

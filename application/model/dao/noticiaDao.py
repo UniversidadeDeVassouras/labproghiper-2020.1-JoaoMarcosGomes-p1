@@ -5,8 +5,6 @@ class NoticiaDao:
 
     def __init__(self):
         self._listaNoticias = listaNoticias
-    def mostrarEstados(self):
-        return self.listaEstados
     def mostrarNoticias(self, estado):
         return estado.getListaNoticias()
     def busca(self, id):
@@ -14,7 +12,7 @@ class NoticiaDao:
             if self._listaNoticias[noticia].getId() == int(id):
                 return self._listaNoticias[noticia]
         return None
-    def apagarComentario(self, noticia):
+    def apagarComment(self, noticia):
         noticia.getComment().pop(len(noticia.getComment())-1)
     def salvarView(self, noticia)
         noticia.setQtdView()
