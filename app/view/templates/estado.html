@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<br><br><br><br>
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="modal fade" id="myModal">
+            {% for noticia in estado.getNewsList() %}
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="{{url_for('static', filename = noticia.getIconeNoticiai())}}" class="img-fluid">
+                    </div>
+                </div>	
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <a href="#" data-toggle="modal" data-target="#myModal"><img src="img/doencas.png" class="img-fluid"></a>
+            <p>Referência: <a href="https://coronavirus.saude.gov.br/index.php/perguntas-e-respostas" target="blank">coronavirus.saude.gov.br</a></p>
+        </div>
+        <div class="col-lg-6">
+            <h3>{{url_for('static', filename = noticia.getTitulo())}}</h3>
+            <hr class="my-3">
+            <p>{{url_for('static', filename = noticia.getTexto())}}</p>
+            <a href="{{url_for('noticia', noticia_id = noticia.get_id())}}" target="_blank"><button type="button" class="btn btn-outline-secondary btn-lg">Saiba Mais</button></a>
+    
+        </div>
+        {% endfor %}
+    
+        
+    
+    </div>
+</div>
+
+{% endblock %}
