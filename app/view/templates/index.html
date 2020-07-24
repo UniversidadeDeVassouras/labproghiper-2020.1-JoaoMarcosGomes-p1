@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<br><br><br><br>
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-3">
+            <div class="card">
+                {% for noticia in listaLatest %}
+                <img class="card-img-top" src="img/fotocolaborador.png">
+                <div class="card-body">
+                    <p class="card-text">{{noticia.getTitulo()}}</p>
+                    <p class="card-text">{{noticia.getQtdView()}} visualização(ões) <br> {{noticia.getQtdLike()}} curtida(s)</p>
+                    <a id="cardButton" href="{{url_for('noticia', noticia_id = noticia.getId())}}" class="btn btn-primary"><strong>Saiba mais</strong></a>
+                </div>
+                {% endfor %}
+                <!-- <div class="card-body">
+                    <h4 class="card-title">Lorem</h4>
+                    <p class="card-text"> Lorem ipsum dolor sit amet</p>
+                </div> -->
+            </div>
+        </div>
+
+{% endblock %}

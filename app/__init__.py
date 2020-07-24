@@ -1,11 +1,12 @@
 from flask import Flask, request
-from application.model.entity.estado import Estado
-from application.model.dao.estadoDao import EstadoDao
-from application.model.entity.noticia import Noticia
-from application.model.dao.noticiaDao import NoticiaDao
 import os
+from app.model.entity.estado import Estado
+from app.model.dao.estadoDao import EstadoDao
+from app.model.entity.noticia import Noticia
+from app.model.dao.noticiaDao import NoticiaDao
 
-app = Flask(__name__, static_folder=os.path.abspath("application/view/static"), template_folder=os.path.abspath("application/view/templates"))
+
+app = Flask(__name__, static_folder=os.path.abspath("app/view/static"), template_folder=os.path.abspath("app/view/static"))
 
 exnot1 = Noticia(1, "exemplotitulo", "exemplotexto", "img/", "video/", "Rio de Janeiro", "")
 exnot2 = Noticia(1, "exemplotitulo", "exemplotexto", "img/", "video/", "Rio de Janeiro", "")
@@ -22,6 +23,6 @@ exest3 = Estado(1,"Bahia", "BA", 'img/', [exnot5,exnot6])
 listaEstados = [exest1,exest2,exest3]
 
 
-from application.controller import controllerIndex
-from application.controller import controllerEstado
-from application.controller import controllerNoticia
+from app.controller import controllerIndex
+from app.controller import controllerEstado
+from app.controller import controllerNoticia

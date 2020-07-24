@@ -1,7 +1,7 @@
-from application import app
+from app import app
 from flask import render_template, request
-from application.model.dao.estadoDao import EstadoDao
-from application.model.entity.estado import Estado
+from app.model.dao.estadoDao import EstadoDao
+from app.model.entity.estado import Estado
 
 
 @app.route('/estado/<estado_id>')
