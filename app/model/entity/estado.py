@@ -1,8 +1,8 @@
 class Estado:
-    def __init__(self, id, nome, uf, iconeEstado, listaNoticias):
+    def __init__(self, id, nome, sigla, iconeEstado, listaNoticias):
         self._id = id
         self._nome = nome
-        self._uf = uf
+        self._sigla = sigla
         self._iconeEstado = iconeEstado
         self._listaNoticias = listaNoticias
 
@@ -10,8 +10,8 @@ class Estado:
         return self._id
     def getNome(self):
         return self._nome
-    def getUf(self):
-        return self._uf
+    def getSigla(self):
+        return self._sigla
     def getIcone(self):
         return self._iconeEstado
     def getNewsList(self):

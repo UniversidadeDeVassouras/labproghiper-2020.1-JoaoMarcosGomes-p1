@@ -1,4 +1,4 @@
-class Co:
+class comment:
     def __init__(self, autor, texto):
         self._autor = autor
         self._texto = texto
