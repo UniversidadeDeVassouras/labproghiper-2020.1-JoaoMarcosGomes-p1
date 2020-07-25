@@ -9,7 +9,7 @@ class NoticiaDao:
     def mostrarNoticias(self, estado):
         return self._listaNoticias
     
-    def busca(self, id):
+    def busca_por_id(self, id):
         for noticia in range(0, len(self._listaNoticias)):
             if self._listaNoticias[noticia].getId() == int(id):
                 return self._listaNoticias[noticia]
