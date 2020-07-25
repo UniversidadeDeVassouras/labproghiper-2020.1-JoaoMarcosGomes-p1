@@ -2,6 +2,17 @@
 {% block body %}
 
 <br><br><br><br>
+<div class="container">
+    <div class="row">
+      <div class="card text-center" style="width: 15rem; height: 16rem; display: block; margin-left: auto; margin-right: auto;">
+        <img class="card-img-top" src="{{url_for('static', filename = estado.getIcone())}}">
+        <div class="card-body">
+          <h5 class="card-title">{{estado.getNome()}} ({{estado.getSigla()}})</h5>
+        </div>
+      </div>
+    </div>
+  </div>  
+<br><br><br><br>
 <div class="container-fluid padding">
     <div class="row padding">
         <div class="modal fade" id="myModal">
@@ -14,22 +25,15 @@
                 </div>	
             </div>
         </div>
-        <div class="col-sm-4">
-            <a href="#" data-toggle="modal" data-target="#myModal"><img src="img/doencas.png" class="img-fluid"></a>
-            <p>Referência: <a href="https://coronavirus.saude.gov.br/index.php/perguntas-e-respostas" target="blank">coronavirus.saude.gov.br</a></p>
-        </div>
         <div class="col-lg-6">
             <h3>{{url_for('static', filename = noticia.getTitulo())}}</h3>
             <hr class="my-3">
             <p>{{url_for('static', filename = noticia.getTexto())}}</p>
-            <a href="{{url_for('noticia', noticia_id = noticia.get_id())}}" target="_blank"><button type="button" class="btn btn-outline-secondary btn-lg">Saiba Mais</button></a>
-    
+            <a href="{{url_for('noticia', noticia_id = noticia.getId())}}" target="_blank"><button type="button" class="btn btn-outline-secondary btn-lg">Saiba Mais</button></a>
         </div>
-        {% endfor %}
-    
-        
-    
+        {% endfor %}    
     </div>
 </div>
+<br><br><br><br><br><br><br>
 
 {% endblock %}

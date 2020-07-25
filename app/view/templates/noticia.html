@@ -1,6 +1,133 @@
 {% extends 'base.html' %}
 {% block body %}
 
+<br><br><br><br>
 
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>{{noticia.getTitulo()}}</h4>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row">   
+      <video width="750" height="425" style="display: block; margin: 0 auto;" controls src="{{url_for('static', filename = noticia.getVideo())}}" type="video/mp4"></video>
+    </div>
+  </div>  
+  <br><br>
+  <div class="container">
+    <div id="qtd-curtida">
+      <h6 style="text-align: center;">{{noticia.getQtdView()}} visualizações | {{noticia.getQtdLike()}} curtidas</h6>
+      <h6 style="text-align: center;">{{noticia.getDataNoticia()}}</h6>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <button  class="btn btn-primary" style="display: block; margin: 0 auto;" onclick="curtir()"><strong>Curtir</strong></button>
+  </div>
+  <br><br>
+  <div class="container">
+      <p><h5>{{noticia.getTexto()}}</h5></p>
+  </div>
+  <br><br>
+  <div class="container">
+    <h6>Comente sua opinião</h6>
+    <br>
+      <form enctype="multipart/form-data" action="{{url_for('comentar', noticia_id = noticia.getId())}}" method="POST" onsubmit="return submitForm(this);">
+        <div class="row">
+          <div class="col">
+            <label for="inputNome">Nome: </label>
+              <input type="text" class="form-control" id="inputNome" name="nome">
+          </div>
+          <div class="col">
+            <label for="inputComentario">Comentário:</label>
+              <input type="textarea" class="form-control" id="inputComentario" name="texto">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            <button type="submit" class="btn btn-primary"><strong>Enviar</strong></button>
+          </div>
+        </div>
+      </form>
+      <br>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-primary" onclick="apagar_comentario()"><strong>Apagar Comentário</strong></button>
+          </div>
+        </div>
+  </div>
+  <br><br><br><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="card">
+        <div class="card-body" id="comentarios-feitos">
+          <h5 class="card-title">Comentários</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              {% for comentario in noticia.getComment() %}
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{comentario.getAutor()}}</h5>
+                    <p class="card-text">{{comentario.getTexto()}}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function submitForm(formElement){
+      var formData = new FormData(formElement);
+      var xhr = new XMLHttpRequest();
+      xhr.open(formElement.method, formElement.action);
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4 && xhr.status == 201) {
+          document.getElementById('comentarios-feitos').innerHTML = xhr.response;
+          };
+        };
+      xhr.send(formData);
+      return false;
+    }
+  </script>
+  
+  <script>
+    function curtir(formElement){
+      var formData = new FormData(formElement);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', "{{url_for('curtir', noticia_id = noticia.getId())}}");
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4 && xhr.status == 200) {
+          document.getElementById('qtd-curtida').innerHTML = xhr.response;
+          };
+        };
+      xhr.send(formData);
+      return false;
+    }
+  </script>
+  
+  <script>
+    function apagar_comentario(formElement){
+      var formData = new FormData(formElement);
+      var xhr = new XMLHttpRequest();
+      xhr.open('DELETE', "{{url_for('apagar', noticia_id = noticia.getId())}}");
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4 && xhr.status == 200) {
+          };
+        };
+      xhr.send(formData);
+      return false;
+    }
+  </script>
+   
+
+<br><br><br><br><br><br><br>
 
 {% endblock %}
